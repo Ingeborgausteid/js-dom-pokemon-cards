@@ -29,9 +29,23 @@ function renderPokemonCards() {
             <li>SPECIAL-DEFENSE: ${p.stats[4].base_stat}</li>
             <li>SPEED: ${p.stats[5].base_stat}</li>`
 
+        gamesHeader = document.createElement("h4");
+        gamesHeader.innerHTML = `GAMES:`;
+
+        gamesList = document.createElement("ul");
+        gamesList.appendChild(gamesHeader)
+        gamesList.classList.add('card--text');
+        p.game_indices.map((games) => {
+            game = document.createElement("li");
+            game.innerHTML = `${games.version.name.toUpperCase()}`;
+            
+            gamesList.appendChild(game);
+        })
+
         li.appendChild(h2);
         li.appendChild(img);
         li.appendChild(ul);
+        li.appendChild(gamesList);
         document.getElementsByClassName("cards")[0].appendChild(li);
     }); 
 }
